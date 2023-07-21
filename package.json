@@ -1,6 +1,6 @@
 {
   "name": "autoprinter",
-  "productName": "Auto Printer",
+  "productName": "AutoPrinter",
   "version": "1.0.0",
   "description": "Automate shell execute and check printer",
   "main": "src/index.js",
@@ -9,7 +9,9 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "lint": "echo \"No linting configured\"",
+    "app:dir": "electron-builder --dir",
+    "app:dist": "electron-builder"
   },
   "keywords": [],
   "author": {
@@ -18,6 +20,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "electron-log": "^5.0.0-beta.24",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
@@ -27,6 +30,22 @@
     "@electron-forge/maker-squirrel": "^6.2.1",
     "@electron-forge/maker-zip": "^6.2.1",
     "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
-    "electron": "25.3.0"
+    "electron": "25.3.0",
+    "electron-builder": "^24.4.0"
+  },
+  "build": {
+    "extraResources": [
+      {
+        "from": "./src/extraResources/",
+        "to": "extraResources",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "requestedExecutionLevel": "requireAdministrator"
+    }
   }
 }

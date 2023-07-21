@@ -1,7 +1,8 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow } = require("electron");
 const electronIpcMain = require("electron").ipcMain;
 const path = require("path");
 const nodeChildProcess = require("child_process");
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
   app.quit();
@@ -21,8 +22,6 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, "index.html"));
-  // mainWindow.loadFile('index.html')
-  //       .then(() => { window.show(); });
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
@@ -66,22 +65,28 @@ app.on("activate", () => {
 // code. You can also put them in separate files and import them here.
 electronIpcMain.on("runScript", (event, senderObj) => {
   // Windows
+  const configFile = path.join(process.resourcesPath, 'extraResources','IIEx_Script.bat');
   let script = nodeChildProcess.spawn("powershell.exe", [
-    "./src/IIEx_Script.bat",
+    configFile,
     senderObj.filePath,
   ]);
-  // MacOS & Linux
-  // let script = nodeChildProcess.spawn('bash', ['test.sh', 'arg1', 'arg2']);
+
   console.log("PID: " + script.pid);
+
   script.stdout.on("data", (data) => {
     console.log("stdout: " + data);
+    event.sender.send('mainProdLog','' + data);
   });
+
   script.stderr.on("data", (err) => {
     console.log("stderr: " + err);
+    event.sender.send('mainProdLog', '' + err);
   });
+
   script.on("exit", (code) => {
     console.log("Exit Code: " + code);
     event.sender.send('scriptResult', code)
+    event.sender.send('mainProdLog', '' + code);
   });
 });
 

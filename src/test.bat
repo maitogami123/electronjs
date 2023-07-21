@@ -1,3 +1,3 @@
 echo "hello World"
 
-echo %1%
+bitsadmin /transfer AutoUpdateIIS /download /priority normal /dynamic %1 C:\\inetpub\\wwwroot\\PrinterService\\PrinterService7.zip

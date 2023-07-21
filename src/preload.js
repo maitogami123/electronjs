@@ -13,7 +13,8 @@ const ipc = {
         ],
         // From main to render.
         'receive': [
-            'scriptResult'
+            'scriptResult',
+            'mainProdLog'
         ],
         // From render to main and back again.
         'sendReceive': [
