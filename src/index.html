@@ -1,108 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
     <title>Auto Basher</title>
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+      href="vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
 
     <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet" />
 
     <!-- Custom styles for this page -->
-    <link href="vendor/sweetAlert/sweetalert2.min.css" rel="stylesheet">
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="vendor/sweetAlert/sweetalert2.min.css" rel="stylesheet" />
+    <link
+      href="vendor/datatables/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-
-<body id="page-top">
-
+  <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="font-weight-bold text-primary">Chạy command shell</h6>
-                        </div>
-                        <div class="card-body">
-                            <form
-                                class="form-inline mr-auto ml-md-3 my-2 mw-100 navbar-search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Nhập đường dẫn tải..." id="filePath">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-danger" id="runScript" type="button">
-                                            Chạy script
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="font-weight-bold text-primary">
+                  Chạy command shell
+                </h6>
+              </div>
+              <div class="card-body">
+                <form
+                  class="form-inline mr-auto ml-md-3 my-2 mw-100 navbar-search"
+                >
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control bg-light border-0 small"
+                      placeholder="Nhập đường dẫn tải..."
+                      id="filePath"
+                    />
+                    <div class="input-group-append">
+                      <button
+                        class="btn btn-danger"
+                        id="runScript"
+                        type="button"
+                      >
+                        Chạy script
+                      </button>
                     </div>
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary d-inline-block">Danh sách máy in</h6>
-                            <button type="button" class="btn btn-primary d-inline-block" id="getPrinterBtn" style="float:right;" >Cập nhật danh sách máy in</button>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="printer-list">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /.container-fluid -->
-
+                  </div>
+                </form>
+              </div>
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Auto Basher</span>
-                    </div>
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary d-inline-block">
+                  Danh sách máy in
+                </h6>
+                <button
+                  type="button"
+                  class="btn btn-primary d-inline-block"
+                  id="getPrinterBtn"
+                  style="float: right"
+                >
+                  Cập nhật danh sách máy in
+                </button>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table
+                    class="table table-bordered"
+                    id="dataTable"
+                    width="100%"
+                    cellspacing="0"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="printer-list"></tbody>
+                  </table>
                 </div>
-            </footer>
-            <!-- End of Footer -->
-
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Main Content -->
 
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; Auto Basher</span>
+            </div>
+          </div>
+        </footer>
+        <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
     </div>
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
+      <i class="fas fa-angle-up"></i>
     </a>
 
     <!-- Bootstrap core JavaScript-->
@@ -123,45 +149,68 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
     <script>
-        document.getElementById('runScript').addEventListener('click', () => {
-            const filePath = document.getElementById('filePath').value;
-            if (filePath.trim().length == 0) {
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Vui lòng nhập đường dẫn!',
-                    icon: 'error',
-                    confirmButtonText: 'Cool'
-                })
-                return;
-            }
-            window.ipcRender.send('runScript', {filePath: document.getElementById('filePath').value});
-        })
+      document.getElementById("runScript").addEventListener("click", () => {
+        const filePath = document.getElementById("filePath").value;
+        if (filePath.trim().length == 0) {
+          Swal.fire({
+            title: "Error!",
+            text: "Vui lòng nhập đường dẫn!",
+            icon: "error",
+            confirmButtonText: "Cool",
+          });
+          return;
+        }
+        window.ipcRender.send("runScript", {
+          filePath: document.getElementById("filePath").value,
+        });
+        Swal.fire({
+          title: "Executing...",
+          html: "Đang thực hiện script...",
+          didOpen: () => {
+            Swal.showLoading();
+          },
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+        });
+      });
 
-        document.getElementById('getPrinterBtn').addEventListener('click', () => {
-            window.ipcRender.invoke('getAllPrinterName').then(result => {
-                const printerList = document.getElementById('printer-list')
-                let rows = result.map(item => `
+      window.ipcRender.receive("scriptResult", (resultCode) => {
+        // 0 = success
+        Swal.close();
+        if (resultCode == 0) {
+          Swal.fire("Hoàn thành!", "Script đã chạy xong!", "success");
+        } else {
+          Swal.fire("Lỗi!", `Exit code ${resultCode}!`, "error");
+        }
+
+      });
+
+      document.getElementById("getPrinterBtn").addEventListener("click", () => {
+        window.ipcRender.invoke("getAllPrinterName").then((result) => {
+          const printerList = document.getElementById("printer-list");
+          let rows = result.map(
+            (item) => `
                     <tr>
                         <td>${item.name}</td>
                         <td>
-                            <form action="https://jsonplaceholder.typicode.com/todos/1" method="POST" target="_blank">                      
+                            <form action="http://10.100.100.30/PrinterService/PrinterSvc.asmx/TestPrintMobiForm" method="POST" target="_blank">                      
                                 <input name="strPrinterName" class="frmInput" value=${item.name} hidden>
                                 <input class="btn btn-primary" type="submit" value="Invoke">
                             </form>
                         </td>
                     </tr>
-                `)
-                printerList.innerHTML = rows.join('')
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Danh sách máy in đã được cập nhật!',
-                    icon: 'success',
-                    confirmButtonText: 'Cool'
-                })
-            })
-        })
-
+                `
+          );
+          printerList.innerHTML = rows.join("");
+          Swal.fire({
+            title: "Success!",
+            text: "Danh sách máy in đã được cập nhật!",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        });
+      });
     </script>
-</body>
-
+  </body>
 </html>

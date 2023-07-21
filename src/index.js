@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const electronIpcMain = require("electron").ipcMain;
 const path = require("path");
 const nodeChildProcess = require("child_process");
@@ -81,6 +81,7 @@ electronIpcMain.on("runScript", (event, senderObj) => {
   });
   script.on("exit", (code) => {
     console.log("Exit Code: " + code);
+    event.sender.send('scriptResult', code)
   });
 });
 

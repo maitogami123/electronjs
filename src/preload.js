@@ -12,7 +12,9 @@ const ipc = {
             'runScript' // Channel name
         ],
         // From main to render.
-        'receive': [],
+        'receive': [
+            'scriptResult'
+        ],
         // From render to main and back again.
         'sendReceive': [
             'getAllPrinterName'
